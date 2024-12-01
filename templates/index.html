@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Paper Generator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Question Paper Generator</h1>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        {% if success %}
+            <div class="success">
+                Question paper generated successfully! 
+                <a href="{{ download_link }}">Download</a>
+            </div>
+        {% endif %}
+        <form action="/" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="file">Upload Question Bank (Excel):</label>
+                <input type="file" name="file" id="file" required>
+            </div>
+            <div>
+                <label for="laq_count">Number of LAQ:</label>
+                <input type="number" name="laq_count" id="laq_count" min="0" required>
+            </div>
+            <div>
+                <label for="saq_count">Number of SAQ:</label>
+                <input type="number" name="saq_count" id="saq_count" min="0" required>
+            </div>
+            <div>
+                <label for="baq_count">Number of BAQ:</label>
+                <input type="number" name="baq_count" id="baq_count" min="0" required>
+            </div>
+            <div>
+                <label for="mcq_count">Number of MCQ:</label>
+                <input type="number" name="mcq_count" id="mcq_count" min="0" required>
+            </div>
+            <button type="submit">Generate Question Paper</button>
+        </form>
+    </div>
+</body>
+</html>
+
